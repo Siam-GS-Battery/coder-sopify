@@ -1,58 +1,189 @@
-# Coder-Sopify
+# คู่มือการใช้งาน Claude Code บน Coder (สำหรับผู้ใช้ครั้งแรก)
 
-This repository is created to guide you on how to set up and use Claude Code (coder) in your development environment.
+<!-- ponytail: integrated google doc guide -->
+เวอร์ชัน: 1.0 · ผู้ดูแลเอกสาร: ทีม Dev / IT · อัปเดตล่าสุด: กรกฎาคม 2026
 
-📚 **[View the Documentation Website](https://siam-gs-battery.github.io/coder-sopify/)**
+จบคู่มือนี้ คุณจะสามารถเปิด VS Code บนเว็บผ่าน Coder, ใช้งาน Claude Code และสั่งให้ Claude เขียนโค้ดตาม SOP ของทีม (sop skill) ได้ พร้อมบันทึกโค้ดขึ้น GitHub
 
-## Overview
+---
 
-<!-- ponytail: simplified overview listing tools -->
-This setup script automatically installs and configures:
-1. **Claude Code** (AI programming assistant)
-2. **agent-skill** (Custom SOP tools cloned and installed to `~/.claude/skills/sop`)
-3. **GitHub CLI** (`gh`)
+## 1. ภาพรวมระบบ
 
-Once installed, you can use these tools to run custom SOP skills and monitor background processes.
+```text
+คุณ (เบราว์เซอร์)
+       │
+       ▼
+Coder ─── สร้าง Workspace (เครื่อง dev บนคลาวด์)
+       │
+       ▼
+VS Code บนเว็บ ─── เปิด Terminal ได้เหมือนเครื่องจริง
+       │
+       ▼
+Claude Code ─── AI ช่วยเขียนโค้ดใน Terminal
+       │
+       ▼
+SOP Skill ─── บังคับให้ Claude เขียนโค้ดตามมาตรฐานทีม (SDLC, React+TS, Node, PostgreSQL)
+       │
+       ▼
+GitHub ─── บันทึกโค้ดทั้งหมด
+```
 
-## One-time Setup
+| องค์ประกอบ | คืออะไร |
+| :--- | :--- |
+| **Coder** | แพลตฟอร์มสร้าง "เครื่องพัฒนา" (Workspace) บนคลาวด์ เปิดใช้ผ่านเบราว์เซอร์ |
+| **VS Code บนเว็บ** | ตัวแก้ไขโค้ดที่รันอยู่ใน Workspace ของ Coder หน้าตาเหมือน VS Code ปกติ |
+| **Claude Code** | เครื่องมือ AI แบบ command line ใช้สั่งงานเขียน/แก้โค้ดด้วยภาษาธรรมชาติ |
+| **SOP Skill** | ชุดกติกาของทีม (มาตรฐาน SDLC ของ GS Battery) ที่ติดตั้งให้ Claude Code อ่านก่อนทำงาน |
 
-<!-- ponytail: merged setup steps -->
-1. **Run the installation script:**
-   ```bash
-   source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
-   ```
+> [!IMPORTANT]
+> **สำคัญที่สุดของเล่มนี้: จุดพังมี 2 จุด**
+> 1. ติดตั้ง/login Claude Code ผิด → ใช้งานไม่ได้เลย
+> 2. ติดตั้ง SOP skill ผิดที่ → Claude ทำงานได้ แต่โค้ดไม่ตาม SOP และจะโดนตีกลับตอน IT Support
+> 
+> *เพราะฉะนั้น ห้ามข้ามขั้นตอน "ทดสอบ" ท้ายบทที่ 4 และ 5 เด็ดขาด*
 
-2. **Log in to GitHub:**
-   ```bash
-   gh auth login
-   ```
+---
 
-3. **Launch Claude Code:**
-   ```bash
-   claude
-   ```
+## 2. สิ่งที่ต้องมีก่อนเริ่ม (Prerequisites)
 
-## Usage
+ติ๊กให้ครบทุกข้อ ก่อนไปบทที่ 3 — ถ้าขาดข้อใด ให้ดำเนินการตามช่อง "ถ้ายังไม่มี" ก่อน
 
-<!-- ponytail: simple usage guidelines -->
-### Running SOP Skills
-Inside your interactive Claude Code session, type the slash command:
+| สถานะ | สิ่งที่ต้องมี | ถ้ายังไม่มี |
+| :---: | :--- | :--- |
+| ☐ | บัญชี GitHub ที่ถูกเพิ่มเข้า Organization ของบริษัทแล้ว | แจ้ง IT ให้เชิญเข้า GitHub Organization |
+| ☐ | สิทธิ์เข้าใช้ Coder (URL: `[ใส่ URL Coder ขององค์กร]`) | แจ้ง IT ขอเปิดบัญชี |
+| ☐ | บัญชี Claude ขององค์กร (อีเมล + รหัสผ่านที่ IT แจ้ง) สำหรับ login Claude Code | แจ้ง IT ขอบัญชี/ที่นั่ง (seat) |
+| ☐ | เบราว์เซอร์ Chrome หรือ Edge เวอร์ชันล่าสุด | อัปเดตเบราว์เซอร์ |
+
+> [!TIP]
+> **ทดสอบง่าย ๆ ว่าพร้อม:** เปิด github.com แล้ว login ได้ + เปิด URL ของ Coder แล้วเห็นหน้า login = ผ่าน 2 ข้อแรก
+
+---
+
+## 3. เข้าใช้ Coder ครั้งแรก
+
+### 3.1 Login เข้า Coder
+1. เปิดเบราว์เซอร์ ไปที่ `[URL Coder ขององค์กร]`
+2. Login ด้วยบัญชีที่ IT ออกให้ (หรือปุ่ม *Sign in with GitHub* ถ้าองค์กรตั้งค่าไว้)
+
+* **สำเร็จเมื่อ:** คุณจะเห็นหน้า Dashboard ของ Coder ที่มีเมนู Workspaces ด้านซ้าย
+
+### 3.2 สร้าง Workspace
+1. คลิก **Workspaces** → **Create Workspace**
+2. เลือก Template ที่ทีมกำหนด: `[ชื่อ Template ขององค์กร เช่น dev-fullstack]`
+3. ตั้งชื่อ Workspace เป็นชื่อของคุณ เช่น `dev-somchai`
+4. คลิก **Create** แล้วรอสถานะเปลี่ยนเป็น **Running** (อาจใช้เวลา 1–3 นาที)
+
+* **สำเร็จเมื่อ:** สถานะ Workspace เป็นวงกลมสีเขียว **Running** และมีปุ่ม/ไอคอน VS Code (Web) ปรากฏ
+
+### 3.3 เปิด VS Code บนเว็บ
+1. คลิกปุ่ม **Code-Server** ใน Workspace ของคุณ
+2. VS Code จะเปิดในแท็บใหม่ของเบราว์เซอร์
+3. เปิด Terminal: เมนู **Terminal** → **New Terminal** (หรือกด `Ctrl` + `` ` ``)
+
+* **สำเร็จเมื่อ:** เห็น Terminal ด้านล่างจอ พิมพ์ `pwd` แล้ว Enter จะแสดง path เช่น `/home/coder`
+
+*(หาก VS Code ไม่เปิด หรือ ค้าง: ดูข้อที่ 6 อาการ A)*
+
+---
+
+## 4. การติดตั้งเครื่องมือ (One-time Setup)
+
+### 4.1 รันสคริปต์ติดตั้งอัตโนมัติ
+รันคำสั่งด้านล่างนี้ใน Terminal ของ VS Code:
+```bash
+source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
+```
+
+### 4.2 Login เข้า Claude Code
+1. ครั้งแรกระบบจะถามวิธี login → เลือก login ด้วยบัญชี Claude (ไม่ใช่ API key)
+2. ระบบจะแสดงลิงก์ URL ใน Terminal
+3. คัดลอกลิงก์นั้นไปเปิดในแท็บเบราว์เซอร์ใหม่ (เนื่องจากอยู่บนเครื่อง cloud เบราว์เซอร์จะไม่เปิดเองอัตโนมัติ)
+4. Login ด้วย **บัญชี Claude ขององค์กรที่ IT ออกให้** — ⚠️ *ห้ามใช้บัญชี Claude ส่วนตัว* เพราะจะไม่มีสิทธิ์ใช้งาน/ไม่ผูกกับองค์กร
+5. เมื่อ login สำเร็จ หน้าเว็บจะแสดงรหัส (code) → คัดลอกกลับมาวางใน Terminal แล้ว Enter
+
+---
+
+## 5. การใช้งาน SOP Skills & Monitor Tool
+
+### 5.1 การเรียกใช้งาน SOP Skills
+หลังจากเปิด Claude Code ด้วยคำสั่ง `claude` คุณสามารถเรียกใช้งานทักษะมาตรฐานการทำงาน (SOP) ด้วยคำสั่ง:
 ```text
 /sop
 ```
 
-### Using the Monitor Tool
-When running long-running processes or watching log files, tell Claude to use its built-in `Monitor` tool to react to events efficiently without polling.
+### 5.2 การใช้งาน Monitor Tool
+เมื่อต้องการรันกระบวนการที่ใช้เวลานาน (เช่น การทดสอบ, การ build หรือการ deploy) หรือเฝ้าดู log ให้สั่งให้ Claude ใช้ **Monitor Tool** เพื่อติดตามผลการทำงานได้อย่างคุ้มค่าโทเค็นและไม่มีการดีเลย์จากการวนซ้ำ (polling):
+* ตัวอย่างคำสั่ง: *"รัน test ทั้งหมดใน background และใช้ Monitor tool เฝ้าดูผลลัพธ์"*
 
-## Troubleshooting & Support
+---
 
-If you encounter any issues or have problems while setting up or using these tools, please contact the administrator for support.
+## 6. แก้ปัญหา (Troubleshooting)
 
-## Uninstalling / Reverting
+หาอาการที่ตรงกับคุณ ทำตามลำดับ ถ้าไม่หายให้ไปหัวข้อ 6.1
 
-To remove Claude Code and the installed agent skills:
+| อาการ | สาเหตุที่พบบ่อย | วิธีแก้ |
+| :--- | :--- | :--- |
+| **A. VS Code บนเว็บไม่เปิด / ค้าง** | Workspace ยังไม่ Running หรือหลับ (auto-stop) | กลับหน้า Coder → กด Start ที่ Workspace → รอสถานะเขียว → เปิดใหม่ |
+| **B. claude: command not found** | ติดตั้งไม่สำเร็จ หรือ PATH ไม่เจอ npm global | รันติดตั้งซ้ำ (ข้อ 4.1) ดู error สีแดงตอนติดตั้ง · ปิดแล้วเปิด Terminal ใหม่ · ถ้ายังไม่หาย แจ้ง IT |
+| **C. Login แล้ว error / ใช้งานไม่ได้** | login ด้วยบัญชีส่วนตัวแทนบัญชีองค์กร หรือ seat ยังไม่ถูกเปิด | พิมพ์ `/logout` ใน Claude Code แล้ว login ใหม่ด้วยบัญชีองค์กร · ถ้าขึ้นว่าไม่มีสิทธิ์ → แจ้ง IT ตรวจ seat |
+| **D. git clone ไม่ได้ (not found / permission denied)** | บัญชี GitHub ยังไม่อยู่ใน Organization หรือพิมพ์ชื่อ repo ผิด | เช็คตัวสะกด URL repo · เปิด repo ในเบราว์เซอร์ดูว่าเข้าได้ไหม · เข้าไม่ได้ = แจ้ง IT เพิ่มสิทธิ์ |
+| **E. Claude ใช้ได้ แต่โค้ดไม่ตาม SOP** | skill อยู่ผิด path / โฟลเดอร์ซ้อนผิดชั้น / ยังไม่ restart Claude | รัน `ls ~/.claude/skills/sop/SKILL.md` ต้องเจอไฟล์ · แก้ path ให้ถูก · ออกจาก Claude (`/exit`) แล้วเปิดใหม่ · ทดสอบข้อ 5.3 ซ้ำ |
+| **F. Workspace ถูกสร้างใหม่แล้วของหายหมด** | Workspace ถูก rebuild — เครื่องบางส่วนถูกล้าง | ทำบทที่ 4 และ 5 ซ้ำ (ใช้เวลา ~10 นาที) · โค้ดไม่หายถ้า push ขึ้น GitHub แล้ว (ดูบทที่ 7) |
+
+### 6.1 ถ้ายังแก้ไม่ได้ — แจ้ง IT ให้ถูกวิธี
+ส่งข้อมูลต่อไปนี้ให้ IT ครบทุกข้อ จะได้รับการช่วยเหลือเร็วขึ้นมาก:
+1. ชื่อ Workspace ของคุณใน Coder
+2. Screenshot ข้อความ error เต็มจอ (ไม่ใช่ถ่ายด้วยมือถือ)
+3. คำสั่งที่รันก่อนเกิด error (copy จาก Terminal)
+4. อาการตรงกับข้อไหนในตารางด้านบน และลองแก้อะไรไปแล้วบ้าง
+
+---
+
+## 7. การใช้งานประจำวัน
+
+### 7.1 เปิดงาน
+1. เข้า Coder → Workspace ของคุณ → ถ้าสถานะไม่เขียว กด **Start**
+2. เปิด VS Code Web → เปิด Terminal
+3. `cd` เข้าโฟลเดอร์โปรเจกต์ แล้วพิมพ์ `claude` (ปกติไม่ต้อง login ใหม่ ถ้าถาม login = ทำข้อ 4.2 ซ้ำ)
+
+### 7.2 บันทึกงานขึ้น GitHub — ทำทุกวันก่อนเลิกงาน
+⚠️ *โค้ดที่อยู่แต่ใน Workspace อาจหายได้หาก Workspace ถูก rebuild — GitHub คือที่เก็บถาวรเพียงที่เดียว*
 
 ```bash
-rm -f ~/.local/bin/claude && rm -rf ~/agent-skill ~/.claude/skills/sop
+git add .
+git commit -m "comment"
+git push
 ```
-*(Note: If you wish to remove the GitHub CLI, you can do so by running `sudo apt purge gh -y`.)*
+หรือสั่ง Claude Code ทำให้: พิมพ์ *"commit และ push งานทั้งหมดขึ้น GitHub"* — Claude จะขอยืนยันก่อนรันคำสั่งเสมอ
+
+> [!WARNING]
+> **ตาม SOP:** ทำงานบน feature branch (เช่น `feature/user-auth`) ไม่ push ตรงเข้า `main`
+
+### 7.3 กติกาการทำงานกับ Claude Code ตาม SOP (ย่อ)
+* ทำงานตามลำดับ phase: Requirements → Design → Database → TDD → Write Code ห้ามข้าม gate
+* เขียน test ก่อนโค้ดจริง (TDD) เสมอ
+* ก่อนส่งงาน: lint / type-check / test ต้องเขียวทั้งหมด, ไม่มี console.log, ไม่มี secret ในโค้ด
+* รายละเอียดเต็มอยู่ใน skill (`~/.claude/skills/sop/`) — ถาม Claude ได้เลย เช่น *"Definition of Done ของทีมมีอะไรบ้าง"*
+
+---
+
+## 8. ภาคผนวก — คำสั่งที่ใช้บ่อย
+
+| คำสั่ง | ทำอะไร |
+| :--- | :--- |
+| `claude` | เปิด Claude Code |
+| `/exit` | ออกจาก Claude Code |
+| `/login` / `/logout` | เข้า/ออกระบบบัญชี Claude |
+| `claude --version` | เช็คเวอร์ชัน (ใช้ตรวจว่าติดตั้งแล้ว) |
+| `claude doctor` | รายงานวินิจฉัยปัญหา (แนบให้ IT ได้) |
+| `ls ~/.claude/skills/sop/SKILL.md` | เช็คว่า SOP skill อยู่ถูกที่ |
+
+---
+
+### เอกสารทางการ
+* **Claude Code:** [docs.claude.com](https://docs.claude.com/en/docs/claude-code/overview)
+* **Coder:** [coder.com/docs](https://coder.com/docs)
+
+---
+*หมายเหตุ: ช่องที่เป็น `[...]` ให้ทีม Dev/IT เติมค่าจริงขององค์กรก่อนแจกจ่าย: URL ของ Coder, ชื่อ Template, ชื่อ GitHub Organization และชื่อ repo ของ SOP skill*
