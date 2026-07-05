@@ -104,15 +104,11 @@ source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopi
 
 ## การใช้งาน (Usage)
 
-### การเรียกใช้งาน SOP Skills
-หลังจากเปิด Claude Code ด้วยคำสั่ง `claude` คุณสามารถเรียกใช้งานทักษะมาตรฐานการทำงาน (SOP) ด้วยคำสั่ง:
-```text
-/sop
-```
+### การใช้งาน SOP Skills และ Monitor Tool
+หลังจากเปิด Claude Code ด้วยคำสั่ง `claude` คุณสามารถเริ่มใช้งานเครื่องมือต่างๆ ได้ทันที:
+* **SOP Skills:** พิมพ์คำสั่ง `/sop` เพื่อเริ่มใช้งานทักษะและกฎเกณฑ์มาตรฐานของทีม
+* **Monitor Tool:** สั่งให้ Claude ใช้ **Monitor Tool** ในกรณีรันกระบวนการที่ใช้เวลานาน (เช่น การทดสอบ, การ build หรือการ deploy) หรือเฝ้าดู log เพื่อประหยัดโทเค็นและเฝ้าสังเกตการณ์ใน background (เช่น *"รัน test ทั้งหมดใน background และใช้ Monitor tool เฝ้าดูผลลัพธ์"*)
 
-### การใช้งาน Monitor Tool
-เมื่อต้องการรันกระบวนการที่ใช้เวลานาน (เช่น การทดสอบ, การ build หรือการ deploy) หรือเฝ้าดู log ให้สั่งให้ Claude ใช้ **Monitor Tool** เพื่อติดตามผลการทำงานได้อย่างคุ้มค่าโทเค็นและไม่มีการดีเลย์จากการวนซ้ำ (polling):
-* ตัวอย่างคำสั่ง: *"รัน test ทั้งหมดใน background และใช้ Monitor tool เฝ้าดูผลลัพธ์"*
 
 ### การสร้าง Repository ใหม่ (Create Repo)
 เมื่อต้องการเริ่มต้นโปรเจกต์ใหม่และอัปโหลดขึ้น GitHub ให้ใช้คำสั่ง GitHub CLI (`gh`) ดังนี้:
