@@ -2,6 +2,8 @@
 
 This repository is created to guide you on how to set up and use Claude Code (coder) in your development environment.
 
+📚 **[View the Documentation Website](https://siam-gs-battery.github.io/coder-sopify/)**
+
 ## Overview
 
 <!-- ponytail: simplified overview listing tools -->
