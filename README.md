@@ -36,6 +36,12 @@ Once the setup completes, run the following commands to configure and start your
    claude
    ```
 
+3. **Run custom SOP skills:**
+   Inside your interactive Claude Code session, type the slash command:
+   ```text
+   /sop
+   ```
+
 ## Uninstalling / Reverting
 
 To remove Claude Code and the installed agent skills:
