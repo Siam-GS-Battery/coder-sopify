@@ -110,27 +110,10 @@ source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopi
 * **Monitor Tool:** สั่งให้ Claude ใช้ **Monitor Tool** ในกรณีรันกระบวนการที่ใช้เวลานาน (เช่น การทดสอบ, การ build หรือการ deploy) หรือเฝ้าดู log เพื่อประหยัดโทเค็นและเฝ้าสังเกตการณ์ใน background (เช่น *"รัน test ทั้งหมดใน background และใช้ Monitor tool เฝ้าดูผลลัพธ์"*)
 
 
-### การสร้าง Repository ใหม่ (Create Repo)
-เมื่อต้องการเริ่มต้นโปรเจกต์ใหม่และอัปโหลดขึ้น GitHub ให้ใช้คำสั่ง GitHub CLI (`gh`) ดังนี้:
-```bash
-# เริ่มต้น Git ในโปรเจกต์ท้องถิ่น
-git init
-git add .
-git commit -m "initial commit"
-git branch -M main
-
-# สร้าง repository ใหม่บน GitHub และ push โค้ดขึ้นไปทันที
-gh repo create [ชื่อโปรเจกต์] --private --source=. --remote=origin --push
-```
-
-### การบันทึกงานขึ้น GitHub (Push)
-สำหรับการบันทึกและส่งงานประจำวัน ให้รันคำสั่งต่อไปนี้ใน Terminal:
-```bash
-git add .
-git commit -m "คำอธิบายการเปลี่ยนแปลงอย่างย่อ"
-git push
-```
-หรือสั่ง Claude Code ทำให้: พิมพ์ *"commit และ push งานทั้งหมดขึ้น GitHub"* — Claude จะขอยืนยันก่อนรันคำสั่งเสมอ
+### การสร้าง Repository ใหม่ และการบันทึกงานขึ้น GitHub (Push)
+คุณสามารถสั่งให้ Claude Code ดำเนินการสร้าง Repository หรือบันทึกงานขึ้น GitHub ได้ทันทีโดยใช้ภาษาธรรมชาติในห้องแชท:
+* **ตัวอย่างการสร้าง Repository ใหม่:** พิมพ์บอก Claude ว่า *"สร้าง repository ใหม่บน GitHub ชื่อ [ชื่อโปรเจกต์] แบบ private และ push โค้ดในเครื่องขึ้นไป"*
+* **ตัวอย่างการบันทึกงานประจำวัน (Push):** พิมพ์บอก Claude ว่า *"บันทึกงานและ push ขึ้น GitHub"* (Claude จะทำการจัดการรันคำสั่ง Git ที่จำเป็นทั้งหมดให้โดยอัตโนมัติหลังจากที่คุณกดยืนยัน)
 
 ---
 
