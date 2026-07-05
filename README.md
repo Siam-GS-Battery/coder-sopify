@@ -63,7 +63,7 @@ GitHub ─── บันทึกโค้ดทั้งหมด
 
 ### สร้าง Workspace
 1. คลิก **Workspaces** → **Create Workspace**
-2. เลือก Template ที่ทีมกำหนด: `[ชื่อ Template ขององค์กร เช่น dev-fullstack]`
+2. เลือก Template ที่ทีมกำหนด: `Incus System Container with Docker`
 3. ตั้งชื่อ Workspace เป็นชื่อของคุณ เช่น `dev-somchai`
 4. คลิก **Create** แล้วรอสถานะเปลี่ยนเป็น **Running** (อาจใช้เวลา 1–3 นาที)
 
