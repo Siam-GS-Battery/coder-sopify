@@ -138,24 +138,6 @@ git push
 
 ---
 
-## การใช้งานประจำวัน
-
-### เปิดงาน
-1. เข้า Coder → Workspace ของคุณ → ถ้าสถานะไม่เขียว กด **Start**
-2. เปิด VS Code Web → เปิด Terminal
-3. `cd` เข้าโฟลเดอร์โปรเจกต์ แล้วพิมพ์ `claude` (ปกติไม่ต้อง login ใหม่ ถ้าถาม login = ทำข้อการติดตั้งเครื่องมือซ้ำ)
-
-### กติกาการทำงานกับ Claude Code ตาม SOP (ย่อ)
-* ทำงานตามลำดับ phase: Requirements → Design → Database → TDD → Write Code ห้ามข้าม gate
-* เขียน test ก่อนโค้ดจริง (TDD) เสมอ
-* ก่อนส่งงาน: lint / type-check / test ต้องเขียวทั้งหมด, ไม่มี console.log, ไม่มี secret ในโค้ด
-* รายละเอียดเต็มอยู่ใน skill (`~/.claude/skills/sop/`) — ถาม Claude ได้เลย เช่น *"Definition of Done ของทีมมีอะไรบ้าง"*
-
-> [!WARNING]
-> **ตาม SOP:** ทำงานบน feature branch (เช่น `feature/user-auth`) ไม่ push ตรงเข้า `main`
-
----
-
 ## ภาคผนวก — คำสั่งที่ใช้บ่อย
 
 | คำสั่ง | ทำอะไร |
