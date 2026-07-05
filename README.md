@@ -9,9 +9,26 @@ The setup script automatically installs:
 2. **agent-skill** (Custom SOP tools cloned and installed to `~/.claude/skills/sop`)
 3. **GitHub CLI** (`gh`)
 
+## Prerequisites (Before Running Setup)
+
+Before running the setup script, ensure you complete the following steps:
+
+1. **Clone this repository and navigate into it:**
+   ```bash
+   git clone https://github.com/Siam-GS-Battery/coder-sopify.git
+   cd coder-sopify
+   ```
+
+2. **Authenticate with GitHub:**
+   Because `agent-skill` is a private repository, you must be authenticated with GitHub to clone it. Make sure your SSH keys are set up or your Git credential helper is configured.
+   You can verify GitHub access by running:
+   ```bash
+   ssh -T git@github.com
+   ```
+
 ## Getting Started
 
-To run the environment setup script:
+Once the prerequisites are met, run the setup script:
 
 ```bash
 bash setup.sh
