@@ -3,7 +3,8 @@
 
 # 1. Install Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+export PATH="$HOME/.local/bin:$PATH"
 
 # 2. Install agent-skill
 rm -rf ~/agent-skill
