@@ -11,21 +11,10 @@ The setup script automatically installs:
 
 ## Getting Started
 
-You can install everything using the one-liner command below (recommended), or by cloning this repository.
+To install and configure your environment, run the following one-liner command directly in your terminal:
 
-### Option 1: Quick Install (One-liner)
-
-Run this directly in your terminal:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh | bash
-```
-
-### Option 2: Clone and Run
-
-```bash
-git clone https://github.com/Siam-GS-Battery/coder-sopify.git
-cd coder-sopify
-bash setup.sh
 ```
 
 ---
