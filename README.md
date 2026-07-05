@@ -11,15 +11,16 @@ The setup script automatically installs:
 
 ## Getting Started
 
-To install and configure your environment, run the script using the `source` command. Sourcing ensures that the new `PATH` configuration takes effect in your current terminal session immediately.
-
-Run this directly in your terminal:
+To install and configure your environment, run the script directly in your terminal using the `source` command.
 
 ```bash
 source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
-*(Note: If you already cloned the repository locally, you can run `source setup.sh` instead.)*
+### Why we use `source` instead of piping to `bash`
+
+* **Executes in your current shell:** `source` runs the script directly inside your active terminal process instead of launching a temporary child subshell.
+* **Applies PATH changes immediately:** Because the script executes in your active shell, the `source ~/.bashrc` line inside the script successfully reloads your shell's environment variables. You can run the `claude` command immediately without needing to restart your terminal.
 
 ## Uninstalling / Reverting
 
