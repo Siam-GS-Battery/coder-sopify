@@ -17,11 +17,6 @@ To install and configure your environment, run the script directly in your termi
 source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
-### Why we use `source` instead of piping to `bash`
-
-* **Executes in your current shell:** `source` runs the script directly inside your active terminal process instead of launching a temporary child subshell.
-* **Applies PATH changes immediately:** Because the script executes in your active shell, the `source ~/.bashrc` line inside the script successfully reloads your shell's environment variables. You can run the `claude` command immediately without needing to restart your terminal.
-
 ## Next Steps
 
 Once the setup completes, run the following commands to configure and start your tools:
