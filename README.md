@@ -11,23 +11,15 @@ The setup script automatically installs:
 
 ## Getting Started
 
-To install and configure your environment, run the following one-liner command directly in your terminal:
+To install and configure your environment, run the script using the `source` command. Sourcing ensures that the new `PATH` configuration takes effect in your current terminal session immediately.
+
+Run this directly in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh | bash
+source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
----
-
-### ⚠️ Critical Step After Installation
-
-After running the script, the `claude` command might not be immediately available in your current active terminal session. To fix this and load the path config, **run one of the following commands in your terminal**:
-
-```bash
-export PATH="$HOME/.local/bin:$PATH"
-# OR reload your bash session:
-exec bash
-```
+*(Note: If you already cloned the repository locally, you can run `source setup.sh` instead.)*
 
 ## Uninstalling / Reverting
 
