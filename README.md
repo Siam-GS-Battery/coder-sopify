@@ -42,6 +42,10 @@ Once the setup completes, run the following commands to configure and start your
    /sop
    ```
 
+## Troubleshooting & Support
+
+If you encounter any issues or have problems while setting up or using these tools, please contact the administrator for support.
+
 ## Uninstalling / Reverting
 
 To remove Claude Code and the installed agent skills:
