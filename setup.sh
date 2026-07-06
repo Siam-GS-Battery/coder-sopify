@@ -36,4 +36,5 @@ EOF
 echo "=== Installation Check ==="
 command -v claude &>/dev/null && echo "Claude: Installed" || echo "Claude: NOT Installed"
 test -f ~/.claude/skills/sop/SKILL.md && echo "agent-skill: Installed" || echo "agent-skill: NOT Installed"
+test -f ~/.claude/CLAUDE.md && echo "CLAUDE.md: Configured" || echo "CLAUDE.md: NOT Configured"
 command -v gh &>/dev/null && echo "gh CLI: Installed" || echo "gh CLI: NOT Installed"
