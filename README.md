@@ -86,6 +86,9 @@ GitHub ─── บันทึกโค้ดทั้งหมด
 source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
+> [!NOTE]
+> สคริปต์จะทำการสร้างไฟล์ `~/.claude/CLAUDE.md` เพื่อคอยแนะนำให้ Claude Code เรียกใช้คำสั่ง `/sop` เสมอเมื่อเริ่มเซสชันใหม่
+
 ### Login เข้าใช้งานระบบ
 รันคำสั่งด้านล่างนี้เพื่อล็อกอิน GitHub และเปิดใช้งาน Claude Code:
 ```bash
@@ -123,6 +126,7 @@ claude
 | `claude --version` | เช็คเวอร์ชัน (ใช้ตรวจว่าติดตั้งแล้ว) |
 | `claude doctor` | รายงานวินิจฉัยปัญหา (แนบให้ IT ได้) |
 | `ls ~/.claude/skills/sop/SKILL.md` | เช็คว่า SOP skill อยู่ถูกที่ |
+| `cat ~/.claude/CLAUDE.md` | เช็คว่ามีการกำหนดคำสั่งเรียกใช้ SOP เสมอ |
 
 ---
 
