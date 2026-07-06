@@ -77,9 +77,6 @@ flowchart TD
 source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
-> [!NOTE]
-> สคริปต์จะทำการสร้างไฟล์ `~/.claude/CLAUDE.md` เพื่อคอยแนะนำให้ Claude Code เรียกใช้คำสั่ง `/sop` เสมอเมื่อเริ่มเซสชันใหม่
-
 ### Login เข้าใช้งานระบบ
 รันคำสั่งด้านล่างนี้เพื่อล็อกอิน GitHub และเปิดใช้งาน Claude Code:
 ```bash
