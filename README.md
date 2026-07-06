@@ -86,12 +86,15 @@ GitHub ─── บันทึกโค้ดทั้งหมด
 source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopify/main/setup.sh)
 ```
 
-### Login เข้า Claude Code
-1. ครั้งแรกระบบจะถามวิธี login → เลือก login ด้วยบัญชี Claude (ไม่ใช่ API key)
-2. ระบบจะแสดงลิงก์ URL ใน Terminal
-3. คัดลอกลิงก์นั้นไปเปิดในแท็บเบราว์เซอร์ใหม่ (เนื่องจากอยู่บนเครื่อง cloud เบราว์เซอร์จะไม่เปิดเองอัตโนมัติ)
-4. Login ด้วย **บัญชี Claude ขององค์กรที่ IT ออกให้** — ⚠️ *ห้ามใช้บัญชี Claude ส่วนตัว* เพราะจะไม่มีสิทธิ์ใช้งาน/ไม่ผูกกับองค์กร
-5. เมื่อ login สำเร็จ หน้าเว็บจะแสดงรหัส (code) → คัดลอกกลับมาวาง in Terminal แล้ว Enter
+### Login เข้าใช้งานระบบ
+รันคำสั่งด้านล่างนี้เพื่อล็อกอิน GitHub และเปิดใช้งาน Claude Code:
+```bash
+gh auth login
+```
+
+```bash
+claude
+```
 
 ---
 
@@ -124,6 +127,7 @@ source <(curl -fsSL https://raw.githubusercontent.com/Siam-GS-Battery/coder-sopi
 ---
 
 ### เอกสารทางการ
+* **คู่มือการใช้งาน (Docs):** [siam-gs-battery.github.io/coder-sopify](https://siam-gs-battery.github.io/coder-sopify/#/?id=coder-sopify)
 * **Claude Code:** [docs.claude.com](https://docs.claude.com/en/docs/claude-code/overview)
 * **Coder:** [coder.com/docs](https://coder.com/docs)
 
