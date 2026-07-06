@@ -94,6 +94,13 @@ claude
 
 ## การใช้งาน (Usage)
 
+### เริ่มต้นใช้งาน (Getting Started)
+1. เปิด **Code-Server** (VS Code บนเว็บ) จาก Dashboard ของ Coder
+2. เปิด Terminal ใน VS Code และพิมพ์คำสั่งเพื่อเปิดใช้งาน Claude Code:
+   ```bash
+   claude
+   ```
+
 ### การใช้งาน SOP Skills และ Monitor Tool
 หลังจากเปิด Claude Code ด้วยคำสั่ง `claude` คุณสามารถเริ่มใช้งานเครื่องมือต่างๆ ได้ทันที:
 * **SOP Skills:** พิมพ์คำสั่ง `/sop` เพื่อเริ่มใช้งานทักษะและกฎเกณฑ์มาตรฐานของทีม
