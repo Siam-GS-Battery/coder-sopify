@@ -9,24 +9,15 @@
 
 ## ภาพรวมระบบ
 
-```text
-คุณ (เบราว์เซอร์)
-       │
-       ▼
-Coder ─── สร้าง Workspace (เครื่อง dev บนคลาวด์)
-       │
-       ▼
-VS Code บนเว็บ ─── เปิด Terminal ได้เหมือนเครื่องจริง
-       │
-       ▼
-Claude Code ─── AI ช่วยเขียนโค้ดใน Terminal
-       │
-       ▼
-SOP Skill ─── บังคับให้ Claude เขียนโค้ดตามมาตรฐานทีม (SDLC, React+TS, Node, PostgreSQL)
-       │
-       ▼
-GitHub ─── บันทึกโค้ดทั้งหมด
+```mermaid
+flowchart TD
+    A["คุณ (เบราว์เซอร์)"] --> B["Coder<br>(สร้าง Workspace เครื่อง dev บนคลาวด์)"]
+    B --> C["VS Code บนเว็บ<br>(เปิด Terminal ได้เหมือนเครื่องจริง)"]
+    C --> D["Claude Code<br>(AI ช่วยเขียนโค้ดใน Terminal)"]
+    D --> E["SOP Skill<br>(บังคับให้ Claude เขียนโค้ดตามมาตรฐานทีม)"]
+    E --> F["GitHub<br>(บันทึกโค้ดทั้งหมด)"]
 ```
+
 
 | องค์ประกอบ | คืออะไร |
 | :--- | :--- |
